@@ -15,14 +15,14 @@ model = dict(
         type='MultiClsHead',
         pool_type='specified',
         in_indices=[0, 1, 2, 3, 4],
-        with_last_layer_unpool=True,
+        with_last_layer_unpool=False,
         backbone='resnet50',
         norm_cfg=dict(type='BN', momentum=0.1, affine=False),
         num_classes=205))
 # dataset settings
 data_source_cfg = dict(
     type='Places205',
-    memcached=False,
+    memcached=True,
     mclient_path='/mnt/lustre/share/memcached_client')
 data_train_list = 'data/places205/meta/train_labeled.txt'
 data_train_root = 'data/places205/train'

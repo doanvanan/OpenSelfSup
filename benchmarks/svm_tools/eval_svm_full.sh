@@ -1,4 +1,7 @@
 #!/bin/bash
+set -x
+set -e
+
 WORK_DIR=$1
 FEAT_LIST=${2:-"feat5"} # "feat1 feat2 feat3 feat4 feat5"
 TRAIN_SVM_FLAG=true
@@ -8,7 +11,6 @@ DATA="data/VOCdevkit/VOC2007/SVMLabels"
 # config svm
 costs="1.0,10.0,100.0"
 
-mkdir $WORK_DIR/logs
 for feat in $FEAT_LIST; do
     echo "For feature: $feat" 2>&1 | tee -a $WORK_DIR/logs/eval_svm.log
     # train svm
